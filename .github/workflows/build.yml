@@ -1,0 +1,59 @@
+name: Build Windows executable
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write            # needed to attach the zip to a release
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt pyinstaller
+
+      - name: Build the executable
+        run: pyinstaller dominance.spec --noconfirm
+
+      - name: Add the example inputs / outputs next to the exe
+        shell: pwsh
+        run: |
+          Copy-Item -Recurse "WORKING FOLDER"    "dist/EarthInformationJukebox/WORKING FOLDER"
+          Copy-Item -Recurse "OUTPUTS_EXAMPLE"   "dist/EarthInformationJukebox/OUTPUTS_EXAMPLE"
+          Copy-Item README.md "dist/EarthInformationJukebox/README.md"
+
+      - name: Self-test the built exe (extract + render one example)
+        shell: pwsh
+        run: |
+          $p = Start-Process "dist/EarthInformationJukebox/EarthInformationJukebox.exe" -ArgumentList "--selftest" -Wait -PassThru
+          Get-Content "dist/EarthInformationJukebox/selftest.log"
+          if ($p.ExitCode -ne 0) { throw "self-test failed" }
+          Remove-Item "dist/EarthInformationJukebox/selftest.log"
+
+      - name: Zip
+        shell: pwsh
+        run: Compress-Archive -Path "dist/EarthInformationJukebox" -DestinationPath EarthInformationJukebox-windows.zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: EarthInformationJukebox-windows
+          path: EarthInformationJukebox-windows.zip
+
+      - name: Publish release (tags only)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: EarthInformationJukebox-windows.zip
