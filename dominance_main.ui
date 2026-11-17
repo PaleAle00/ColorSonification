@@ -1,0 +1,3760 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowTitle">
+   <string>Earth Information Jukebox · colour dominance</string>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1560</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="lay_outer" stretch="0,1,0">
+    <property name="leftMargin">
+     <number>10</number>
+    </property>
+    <property name="topMargin">
+     <number>10</number>
+    </property>
+    <property name="rightMargin">
+     <number>10</number>
+    </property>
+    <property name="bottomMargin">
+     <number>10</number>
+    </property>
+    <property name="spacing">
+     <number>10</number>
+    </property>
+    <item>
+     <layout class="QHBoxLayout" name="lay_top" stretch="0,1,0">
+      <property name="spacing">
+       <number>8</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="lbl_folder">
+        <property name="text">
+         <string>Working folder</string>
+        </property>
+        <property name="role" stdset="0">
+         <string>dim</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="folder_edit">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+        <property name="placeholderText">
+         <string>choose a folder with pictures and videos…</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_browse">
+        <property name="text">
+         <string>Browse…</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QSplitter" name="split">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="childrenCollapsible">
+       <bool>false</bool>
+      </property>
+      <widget class="QWidget" name="panel_left">
+       <property name="minimumSize">
+        <size>
+         <width>270</width>
+         <height>0</height>
+        </size>
+       </property>
+       <layout class="QVBoxLayout" name="lay_left">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="count_lbl">
+          <property name="text">
+           <string>Files</string>
+          </property>
+          <property name="role" stdset="0">
+           <string>title</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QListWidget" name="list">
+          <property name="iconSize">
+           <size>
+            <width>76</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="spacing">
+           <number>2</number>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="textElideMode">
+           <enum>Qt::ElideMiddle</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="panel_centre">
+       <layout class="QVBoxLayout" name="lay_centre" stretch="0,5,5,0">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>8</number>
+        </property>
+        <item>
+         <layout class="QHBoxLayout" name="lay_seg">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="btn_heard">
+            <property name="text">
+             <string>Strips</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>true</bool>
+            </property>
+            <property name="role" stdset="0">
+             <string>seg</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_aud">
+            <property name="text">
+             <string>Spectrum</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>true</bool>
+            </property>
+            <property name="role" stdset="0">
+             <string>seg</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="spacer_seg">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="vis_title">
+            <property name="text">
+             <string />
+            </property>
+            <property name="role" stdset="0">
+             <string>dim</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="lay_views" stretch="4,5">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <item>
+           <widget class="SourceView" name="source">
+            <property name="minimumSize">
+             <size>
+              <width>220</width>
+              <height>150</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="StripMeters" name="meters">
+            <property name="minimumSize">
+             <size>
+              <width>160</width>
+              <height>150</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="HeatView" name="heat">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>110</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="lay_transport" stretch="0,1,0">
+          <property name="spacing">
+           <number>10</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="play_btn">
+            <property name="text">
+             <string>▶</string>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>46</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>46</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="slider">
+            <property name="maximum">
+             <number>1000</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="time_lbl">
+            <property name="text">
+             <string>0:00.0 / 0:00.0</string>
+            </property>
+            <property name="role" stdset="0">
+             <string>dim</string>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>110</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>110</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="panel_right">
+       <property name="minimumSize">
+        <size>
+         <width>430</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>520</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <layout class="QVBoxLayout" name="lay_right">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QTabWidget" name="tabs">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="tab_picture">
+           <attribute name="title">
+            <string>Picture</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="lay_tab_picture">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QScrollArea" name="scroll_picture">
+              <property name="widgetResizable">
+               <bool>true</bool>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="horizontalScrollBarPolicy">
+               <enum>Qt::ScrollBarAlwaysOff</enum>
+              </property>
+              <widget class="QWidget" name="page_picture">
+               <layout class="QVBoxLayout" name="lay_picture">
+                <property name="leftMargin">
+                 <number>14</number>
+                </property>
+                <property name="topMargin">
+                 <number>14</number>
+                </property>
+                <property name="rightMargin">
+                 <number>14</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>14</number>
+                </property>
+                <property name="spacing">
+                 <number>10</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="hint_picture">
+                  <property name="text">
+                   <string>How the picture is read (the original scan).  Changing anything here means it must be extracted again.</string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                  <property name="role" stdset="0">
+                   <string>hint</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QFormLayout" name="form_picture">
+                  <property name="verticalSpacing">
+                   <number>9</number>
+                  </property>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="lbl_scan">
+                    <property name="text">
+                     <string>Scan</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Sweep: a scan line travels across the picture while the sound plays (a video plays along).
+Variable speed: different speed near the edges than in the middle.
+Fixed column: always the same column - for videos.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="ComboNW" name="p_scan">
+                    <property name="toolTip">
+                     <string>Sweep: a scan line travels across the picture while the sound plays (a video plays along).
+Variable speed: different speed near the edges than in the middle.
+Fixed column: always the same column - for videos.</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Sweep · constant speed</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Sweep · variable speed</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Fixed column</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>0</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="lbl_scan_curve">
+                    <property name="text">
+                     <string>Speed curve</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>How the speed changes with position (variable speed only).</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="ComboNW" name="p_scan_curve">
+                    <property name="toolTip">
+                     <string>How the speed changes with position (variable speed only).</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Smooth ease (cosine)</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Linear ramp</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Flat middle (quadratic)</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Very flat middle (quartic)</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>0</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="lbl_scan_ratio">
+                    <property name="text">
+                     <string>Edge ÷ centre speed</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>4 = four times faster at the edges than in the middle; below 1 = slower at the edges.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="DSpinNW" name="p_scan_ratio">
+                    <property name="toolTip">
+                     <string>4 = four times faster at the edges than in the middle; below 1 = slower at the edges.</string>
+                    </property>
+                    <property name="decimals">
+                     <number>1</number>
+                    </property>
+                    <property name="minimum">
+                     <double>0.1</double>
+                    </property>
+                    <property name="maximum">
+                     <double>20.0</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>0.5</double>
+                    </property>
+                    <property name="value">
+                     <double>4.0</double>
+                    </property>
+                    <property name="suffix">
+                     <string> ×</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0">
+                   <widget class="QLabel" name="lbl_scan_position">
+                    <property name="text">
+                     <string>Column position</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Where the fixed column sits: 0 % = left edge, 100 % = right edge.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="SpinNW" name="p_scan_position">
+                    <property name="toolTip">
+                     <string>Where the fixed column sits: 0 % = left edge, 100 % = right edge.</string>
+                    </property>
+                    <property name="minimum">
+                     <number>0</number>
+                    </property>
+                    <property name="maximum">
+                     <number>100</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>5</number>
+                    </property>
+                    <property name="value">
+                     <number>50</number>
+                    </property>
+                    <property name="suffix">
+                     <string> %</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="0">
+                   <widget class="QLabel" name="lbl_passes">
+                    <property name="text">
+                     <string>Passes</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>How often the scan crosses the picture (left-right-left ...) during the sound.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="1">
+                   <widget class="SpinNW" name="p_passes">
+                    <property name="toolTip">
+                     <string>How often the scan crosses the picture (left-right-left ...) during the sound.</string>
+                    </property>
+                    <property name="minimum">
+                     <number>1</number>
+                    </property>
+                    <property name="maximum">
+                     <number>8</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>1</number>
+                    </property>
+                    <property name="value">
+                     <number>1</number>
+                    </property>
+                    <property name="suffix">
+                     <string />
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="0">
+                   <widget class="QLabel" name="lbl_length">
+                    <property name="text">
+                     <string>Length</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Duration of the sound; the whole picture / video is stretched to it.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="1">
+                   <widget class="SpinNW" name="p_length">
+                    <property name="toolTip">
+                     <string>Duration of the sound; the whole picture / video is stretched to it.</string>
+                    </property>
+                    <property name="minimum">
+                     <number>5</number>
+                    </property>
+                    <property name="maximum">
+                     <number>600</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>5</number>
+                    </property>
+                    <property name="value">
+                     <number>30</number>
+                    </property>
+                    <property name="suffix">
+                     <string> s</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="0">
+                   <widget class="QLabel" name="lbl_bands">
+                    <property name="text">
+                     <string>Pitch bands</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Horizontal bands the picture is cut into (top = high). They are grouped into the pad voices of the Sound tab.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="1">
+                   <widget class="SpinNW" name="p_bands">
+                    <property name="toolTip">
+                     <string>Horizontal bands the picture is cut into (top = high). They are grouped into the pad voices of the Sound tab.</string>
+                    </property>
+                    <property name="minimum">
+                     <number>8</number>
+                    </property>
+                    <property name="maximum">
+                     <number>48</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>2</number>
+                    </property>
+                    <property name="value">
+                     <number>24</number>
+                    </property>
+                    <property name="suffix">
+                     <string />
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="7" column="0">
+                   <widget class="QLabel" name="lbl_smooth">
+                    <property name="text">
+                     <string>Smoothing</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>How slowly the sound may change. Small = busy, large = calm.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="7" column="1">
+                   <widget class="DSpinNW" name="p_smooth">
+                    <property name="toolTip">
+                     <string>How slowly the sound may change. Small = busy, large = calm.</string>
+                    </property>
+                    <property name="decimals">
+                     <number>2</number>
+                    </property>
+                    <property name="minimum">
+                     <double>0.05</double>
+                    </property>
+                    <property name="maximum">
+                     <double>1.5</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>0.05</double>
+                    </property>
+                    <property name="value">
+                     <double>0.25</double>
+                    </property>
+                    <property name="suffix">
+                     <string> s</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="8" column="0">
+                   <widget class="QLabel" name="lbl_blur_pct">
+                    <property name="text">
+                     <string>Pre-blur</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Blur applied before reading, as a share of the picture size. More = softer, fewer bells.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="8" column="1">
+                   <widget class="DSpinNW" name="p_blur_pct">
+                    <property name="toolTip">
+                     <string>Blur applied before reading, as a share of the picture size. More = softer, fewer bells.</string>
+                    </property>
+                    <property name="decimals">
+                     <number>1</number>
+                    </property>
+                    <property name="minimum">
+                     <double>0.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>5.0</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>0.1</double>
+                    </property>
+                    <property name="value">
+                     <double>0.6</double>
+                    </property>
+                    <property name="suffix">
+                     <string> %</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="9" column="0">
+                   <widget class="QLabel" name="lbl_flux_smooth">
+                    <property name="text">
+                     <string>Hit sharpness</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Time scale of the onsets that fire drums and plucks. Small = many sharp hits.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="9" column="1">
+                   <widget class="DSpinNW" name="p_flux_smooth">
+                    <property name="toolTip">
+                     <string>Time scale of the onsets that fire drums and plucks. Small = many sharp hits.</string>
+                    </property>
+                    <property name="decimals">
+                     <number>2</number>
+                    </property>
+                    <property name="minimum">
+                     <double>0.01</double>
+                    </property>
+                    <property name="maximum">
+                     <double>0.5</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>0.01</double>
+                    </property>
+                    <property name="value">
+                     <double>0.06</double>
+                    </property>
+                    <property name="suffix">
+                     <string> s</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="10" column="0">
+                   <widget class="QLabel" name="lbl_compress_k">
+                    <property name="text">
+                     <string>Highlight squash</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>How strongly the brightest spots are compressed. High = dim areas sound too.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="10" column="1">
+                   <widget class="DSpinNW" name="p_compress_k">
+                    <property name="toolTip">
+                     <string>How strongly the brightest spots are compressed. High = dim areas sound too.</string>
+                    </property>
+                    <property name="decimals">
+                     <number>1</number>
+                    </property>
+                    <property name="minimum">
+                     <double>0.5</double>
+                    </property>
+                    <property name="maximum">
+                     <double>40.0</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>0.5</double>
+                    </property>
+                    <property name="value">
+                     <double>8.0</double>
+                    </property>
+                    <property name="suffix">
+                     <string />
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="11" column="0">
+                   <widget class="QLabel" name="lbl_norm_high_pct">
+                    <property name="text">
+                     <string>Full-scale level</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>The brightness percentile that counts as full volume.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="11" column="1">
+                   <widget class="DSpinNW" name="p_norm_high_pct">
+                    <property name="toolTip">
+                     <string>The brightness percentile that counts as full volume.</string>
+                    </property>
+                    <property name="decimals">
+                     <number>1</number>
+                    </property>
+                    <property name="minimum">
+                     <double>90.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>100.0</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>0.1</double>
+                    </property>
+                    <property name="value">
+                     <double>99.5</double>
+                    </property>
+                    <property name="suffix">
+                     <string> %</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="12" column="0">
+                   <widget class="QLabel" name="lbl_motion_width">
+                    <property name="text">
+                     <string>Motion band</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Width of the band of columns around the scan line whose movement is measured (track 'Movement near the scan line').
+100 % = the whole frame.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="12" column="1">
+                   <widget class="SpinNW" name="p_motion_width">
+                    <property name="toolTip">
+                     <string>Width of the band of columns around the scan line whose movement is measured (track 'Movement near the scan line').
+100 % = the whole frame.</string>
+                    </property>
+                    <property name="minimum">
+                     <number>2</number>
+                    </property>
+                    <property name="maximum">
+                     <number>100</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>2</number>
+                    </property>
+                    <property name="value">
+                     <number>10</number>
+                    </property>
+                    <property name="suffix">
+                     <string> %</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <spacer name="spacer_picture">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_colour">
+           <attribute name="title">
+            <string>Colour</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="lay_tab_colour">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QScrollArea" name="scroll_colour">
+              <property name="widgetResizable">
+               <bool>true</bool>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="horizontalScrollBarPolicy">
+               <enum>Qt::ScrollBarAlwaysOff</enum>
+              </property>
+              <widget class="QWidget" name="page_colour">
+               <layout class="QVBoxLayout" name="lay_colour">
+                <property name="leftMargin">
+                 <number>14</number>
+                </property>
+                <property name="topMargin">
+                 <number>14</number>
+                </property>
+                <property name="rightMargin">
+                 <number>14</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>14</number>
+                </property>
+                <property name="spacing">
+                 <number>10</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="hint_colour">
+                  <property name="text">
+                   <string>The dominant colour of every pitch strip can change the TIMBRE of that strip's pad and bell notes - never their loudness.  With the two switches on this tab off, the sound is exactly the original.</string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                  <property name="role" stdset="0">
+                   <string>hint</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QFormLayout" name="form_colour">
+                  <property name="verticalSpacing">
+                   <number>9</number>
+                  </property>
+                  <item row="0" column="0" colspan="2">
+                   <widget class="QCheckBox" name="p_colour_on">
+                    <property name="toolTip">
+                     <string>Off: the original sound.  On: every strip's pad and bell notes take the timbre of the strip's colour class.</string>
+                    </property>
+                    <property name="text">
+                     <string>dominant colour changes the timbre</string>
+                    </property>
+                    <property name="checked">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="lbl_preset">
+                    <property name="text">
+                     <string>Timbres</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Ready-made assignments of a timbre to every colour class.  Changing a class below switches this to Custom.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="ComboNW" name="p_preset">
+                    <property name="toolTip">
+                     <string>Ready-made assignments of a timbre to every colour class.  Changing a class below switches this to Custom.</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Elements</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Steady</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Pulsing</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Custom - chosen below</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>0</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="lbl_timbre_warm">
+                    <property name="text">
+                     <string>Red / orange</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>The timbre of strips whose dominant colour is red / orange:
+Soft - the original pad sound: a sine with a little octave
+Pure - a bare sine, the plainest possible
+Brass - buzzing and full: every harmonic, falling off slowly
+Reed - hollow, clarinet-like: odd harmonics only
+Breath - hollow and mellow (a few odd harmonics), swelling once per beat
+Glass - glassy: two and three octaves above the note, shimmering in sixteenths
+Organ - organ-like: the note with its octave and double octave, throbbing in eighths
+Pulse - the soft sound, throbbing in eighths</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="ComboNW" name="p_timbre_warm">
+                    <property name="toolTip">
+                     <string>The timbre of strips whose dominant colour is red / orange:
+Soft - the original pad sound: a sine with a little octave
+Pure - a bare sine, the plainest possible
+Brass - buzzing and full: every harmonic, falling off slowly
+Reed - hollow, clarinet-like: odd harmonics only
+Breath - hollow and mellow (a few odd harmonics), swelling once per beat
+Glass - glassy: two and three octaves above the note, shimmering in sixteenths
+Organ - organ-like: the note with its octave and double octave, throbbing in eighths
+Pulse - the soft sound, throbbing in eighths</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Soft</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Pure</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Brass</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Reed</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Breath</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Glass</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Organ</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Pulse</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>2</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0">
+                   <widget class="QLabel" name="lbl_timbre_green">
+                    <property name="text">
+                     <string>Yellow / green</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>The timbre of strips whose dominant colour is yellow / green:
+Soft - the original pad sound: a sine with a little octave
+Pure - a bare sine, the plainest possible
+Brass - buzzing and full: every harmonic, falling off slowly
+Reed - hollow, clarinet-like: odd harmonics only
+Breath - hollow and mellow (a few odd harmonics), swelling once per beat
+Glass - glassy: two and three octaves above the note, shimmering in sixteenths
+Organ - organ-like: the note with its octave and double octave, throbbing in eighths
+Pulse - the soft sound, throbbing in eighths</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="ComboNW" name="p_timbre_green">
+                    <property name="toolTip">
+                     <string>The timbre of strips whose dominant colour is yellow / green:
+Soft - the original pad sound: a sine with a little octave
+Pure - a bare sine, the plainest possible
+Brass - buzzing and full: every harmonic, falling off slowly
+Reed - hollow, clarinet-like: odd harmonics only
+Breath - hollow and mellow (a few odd harmonics), swelling once per beat
+Glass - glassy: two and three octaves above the note, shimmering in sixteenths
+Organ - organ-like: the note with its octave and double octave, throbbing in eighths
+Pulse - the soft sound, throbbing in eighths</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Soft</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Pure</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Brass</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Reed</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Breath</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Glass</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Organ</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Pulse</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>4</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="0">
+                   <widget class="QLabel" name="lbl_timbre_blue">
+                    <property name="text">
+                     <string>Cyan / blue</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>The timbre of strips whose dominant colour is cyan / blue:
+Soft - the original pad sound: a sine with a little octave
+Pure - a bare sine, the plainest possible
+Brass - buzzing and full: every harmonic, falling off slowly
+Reed - hollow, clarinet-like: odd harmonics only
+Breath - hollow and mellow (a few odd harmonics), swelling once per beat
+Glass - glassy: two and three octaves above the note, shimmering in sixteenths
+Organ - organ-like: the note with its octave and double octave, throbbing in eighths
+Pulse - the soft sound, throbbing in eighths</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="1">
+                   <widget class="ComboNW" name="p_timbre_blue">
+                    <property name="toolTip">
+                     <string>The timbre of strips whose dominant colour is cyan / blue:
+Soft - the original pad sound: a sine with a little octave
+Pure - a bare sine, the plainest possible
+Brass - buzzing and full: every harmonic, falling off slowly
+Reed - hollow, clarinet-like: odd harmonics only
+Breath - hollow and mellow (a few odd harmonics), swelling once per beat
+Glass - glassy: two and three octaves above the note, shimmering in sixteenths
+Organ - organ-like: the note with its octave and double octave, throbbing in eighths
+Pulse - the soft sound, throbbing in eighths</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Soft</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Pure</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Brass</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Reed</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Breath</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Glass</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Organ</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Pulse</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>5</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="0">
+                   <widget class="QLabel" name="lbl_timbre_magenta">
+                    <property name="text">
+                     <string>Violet / pink</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>The timbre of strips whose dominant colour is violet / pink:
+Soft - the original pad sound: a sine with a little octave
+Pure - a bare sine, the plainest possible
+Brass - buzzing and full: every harmonic, falling off slowly
+Reed - hollow, clarinet-like: odd harmonics only
+Breath - hollow and mellow (a few odd harmonics), swelling once per beat
+Glass - glassy: two and three octaves above the note, shimmering in sixteenths
+Organ - organ-like: the note with its octave and double octave, throbbing in eighths
+Pulse - the soft sound, throbbing in eighths</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="1">
+                   <widget class="ComboNW" name="p_timbre_magenta">
+                    <property name="toolTip">
+                     <string>The timbre of strips whose dominant colour is violet / pink:
+Soft - the original pad sound: a sine with a little octave
+Pure - a bare sine, the plainest possible
+Brass - buzzing and full: every harmonic, falling off slowly
+Reed - hollow, clarinet-like: odd harmonics only
+Breath - hollow and mellow (a few odd harmonics), swelling once per beat
+Glass - glassy: two and three octaves above the note, shimmering in sixteenths
+Organ - organ-like: the note with its octave and double octave, throbbing in eighths
+Pulse - the soft sound, throbbing in eighths</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Soft</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Pure</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Brass</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Reed</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Breath</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Glass</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Organ</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Pulse</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>6</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="0">
+                   <widget class="QLabel" name="lbl_timbre_neutral">
+                    <property name="text">
+                     <string>Grey / black / white</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>The timbre of strips whose dominant colour is grey / black / white:
+Soft - the original pad sound: a sine with a little octave
+Pure - a bare sine, the plainest possible
+Brass - buzzing and full: every harmonic, falling off slowly
+Reed - hollow, clarinet-like: odd harmonics only
+Breath - hollow and mellow (a few odd harmonics), swelling once per beat
+Glass - glassy: two and three octaves above the note, shimmering in sixteenths
+Organ - organ-like: the note with its octave and double octave, throbbing in eighths
+Pulse - the soft sound, throbbing in eighths</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="1">
+                   <widget class="ComboNW" name="p_timbre_neutral">
+                    <property name="toolTip">
+                     <string>The timbre of strips whose dominant colour is grey / black / white:
+Soft - the original pad sound: a sine with a little octave
+Pure - a bare sine, the plainest possible
+Brass - buzzing and full: every harmonic, falling off slowly
+Reed - hollow, clarinet-like: odd harmonics only
+Breath - hollow and mellow (a few odd harmonics), swelling once per beat
+Glass - glassy: two and three octaves above the note, shimmering in sixteenths
+Organ - organ-like: the note with its octave and double octave, throbbing in eighths
+Pulse - the soft sound, throbbing in eighths</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Soft</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Pure</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Brass</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Reed</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Breath</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Glass</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Organ</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Pulse</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>0</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="7" column="0">
+                   <widget class="QLabel" name="lbl_depth">
+                    <property name="text">
+                     <string>Colour depth</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>How far the timbres move away from the original pad sound. 0 % = original timbre everywhere.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="7" column="1">
+                   <widget class="SpinNW" name="p_depth">
+                    <property name="toolTip">
+                     <string>How far the timbres move away from the original pad sound. 0 % = original timbre everywhere.</string>
+                    </property>
+                    <property name="minimum">
+                     <number>0</number>
+                    </property>
+                    <property name="maximum">
+                     <number>100</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>10</number>
+                    </property>
+                    <property name="value">
+                     <number>100</number>
+                    </property>
+                    <property name="suffix">
+                     <string> %</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="8" column="0">
+                   <widget class="QLabel" name="lbl_weighting">
+                    <property name="text">
+                     <string>Equal loudness by</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>The curve that decides when two timbres count as equally loud.
+K (used for the voice balance of the original) is nearly flat; A cuts the bass like the ear does at low volume.
+If the richer timbres seem louder than the plain ones, choose Halfway or A (see README).</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="8" column="1">
+                   <widget class="ComboNW" name="p_weighting">
+                    <property name="toolTip">
+                     <string>The curve that decides when two timbres count as equally loud.
+K (used for the voice balance of the original) is nearly flat; A cuts the bass like the ear does at low volume.
+If the richer timbres seem louder than the plain ones, choose Halfway or A (see README).</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>K-weighting</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>A-weighting</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Halfway K / A</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>0</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="9" column="0">
+                   <widget class="QCheckBox" name="p_mute">
+                    <property name="toolTip">
+                     <string>A strip that is grey (red, green, blue nearly equal) AND darker than the limit fades out of the pad and the bells.  White and bright grey still sound.</string>
+                    </property>
+                    <property name="text">
+                     <string>mute dark grey below</string>
+                    </property>
+                    <property name="checked">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="9" column="1">
+                   <widget class="SpinNW" name="p_mute_below">
+                    <property name="toolTip">
+                     <string>Brightness under which a grey strip is muted (0 % = nothing, 100 % = every grey, even white).</string>
+                    </property>
+                    <property name="minimum">
+                     <number>0</number>
+                    </property>
+                    <property name="maximum">
+                     <number>100</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>5</number>
+                    </property>
+                    <property name="value">
+                     <number>25</number>
+                    </property>
+                    <property name="suffix">
+                     <string> %</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="10" column="0">
+                   <widget class="QLabel" name="lbl_mute_tolerance">
+                    <property name="text">
+                     <string>Grey tolerance</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>How much colour a strip may have and still count as grey (saturation limit).</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="10" column="1">
+                   <widget class="SpinNW" name="p_mute_tolerance">
+                    <property name="toolTip">
+                     <string>How much colour a strip may have and still count as grey (saturation limit).</string>
+                    </property>
+                    <property name="minimum">
+                     <number>0</number>
+                    </property>
+                    <property name="maximum">
+                     <number>50</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>5</number>
+                    </property>
+                    <property name="value">
+                     <number>15</number>
+                    </property>
+                    <property name="suffix">
+                     <string> %</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btn_listen">
+                  <property name="text">
+                   <string>♪  Listen to the five timbres</string>
+                  </property>
+                  <property name="toolTip">
+                   <string>Plays one chord in each class timbre (red/orange, yellow/green, cyan/blue, violet/pink, grey), then a blend of all.</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="spacer_colour">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_layers">
+           <attribute name="title">
+            <string>Layers</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="lay_tab_layers">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QScrollArea" name="scroll_layers">
+              <property name="widgetResizable">
+               <bool>true</bool>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="horizontalScrollBarPolicy">
+               <enum>Qt::ScrollBarAlwaysOff</enum>
+              </property>
+              <widget class="QWidget" name="page_layers">
+               <layout class="QVBoxLayout" name="lay_layers">
+                <property name="leftMargin">
+                 <number>14</number>
+                </property>
+                <property name="topMargin">
+                 <number>14</number>
+                </property>
+                <property name="rightMargin">
+                 <number>14</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>14</number>
+                </property>
+                <property name="spacing">
+                 <number>10</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="hint_layers">
+                  <property name="text">
+                   <string>The voices of the original sonification.  Untick one to leave it out; the level is relative to the original balance; 'follows' is the track of the picture that drives the voice (each one starts on its original track).</string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                  <property name="role" stdset="0">
+                   <string>hint</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QFormLayout" name="form_layers">
+                  <property name="verticalSpacing">
+                   <number>9</number>
+                  </property>
+                  <item row="0" column="0">
+                   <widget class="QCheckBox" name="p_on_pad">
+                    <property name="toolTip">
+                     <string>Soft sustained tones, one per pitch strip.</string>
+                    </property>
+                    <property name="text">
+                     <string>Pad chord</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="DSpinNW" name="p_level_pad">
+                    <property name="toolTip">
+                     <string>Level relative to the original balance.</string>
+                    </property>
+                    <property name="decimals">
+                     <number>1</number>
+                    </property>
+                    <property name="minimum">
+                     <double>-30.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>12.0</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>1.0</double>
+                    </property>
+                    <property name="value">
+                     <double>0.0</double>
+                    </property>
+                    <property name="suffix">
+                     <string> dB</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="lbl_drive_pad">
+                    <property name="text">
+                     <string>   follows</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>The track of the picture that drives this voice.
+'Movement near the scan line' follows what moves in the part of a video being scanned right now (band width: Picture tab).</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="ComboNW" name="p_drive_pad">
+                    <property name="toolTip">
+                     <string>The track of the picture that drives this voice.
+'Movement near the scan line' follows what moves in the part of a video being scanned right now (band width: Picture tab).</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Brightness per strip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Bright spots per strip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Onsets per strip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Overall brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Vertical centre of brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Vertical spread of brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Colour saturation</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Colourfulness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Warm colour intensity</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Warmth (red vs blue)</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Movement of the whole frame</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Movement near the scan line</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Edge / onset strength</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Texture / fine detail</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Bottom third brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Middle third brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Top third brightness</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>0</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QCheckBox" name="p_on_bells">
+                    <property name="toolTip">
+                     <string>Bell-like tones; only the strongest few ring at once.</string>
+                    </property>
+                    <property name="text">
+                     <string>Bells</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="DSpinNW" name="p_level_bells">
+                    <property name="toolTip">
+                     <string>Level relative to the original balance.</string>
+                    </property>
+                    <property name="decimals">
+                     <number>1</number>
+                    </property>
+                    <property name="minimum">
+                     <double>-30.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>12.0</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>1.0</double>
+                    </property>
+                    <property name="value">
+                     <double>0.0</double>
+                    </property>
+                    <property name="suffix">
+                     <string> dB</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0">
+                   <widget class="QLabel" name="lbl_drive_bells">
+                    <property name="text">
+                     <string>   follows</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>The track of the picture that drives this voice.
+'Movement near the scan line' follows what moves in the part of a video being scanned right now (band width: Picture tab).</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="ComboNW" name="p_drive_bells">
+                    <property name="toolTip">
+                     <string>The track of the picture that drives this voice.
+'Movement near the scan line' follows what moves in the part of a video being scanned right now (band width: Picture tab).</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Brightness per strip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Bright spots per strip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Onsets per strip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Overall brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Vertical centre of brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Vertical spread of brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Colour saturation</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Colourfulness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Warm colour intensity</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Warmth (red vs blue)</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Movement of the whole frame</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Movement near the scan line</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Edge / onset strength</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Texture / fine detail</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Bottom third brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Middle third brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Top third brightness</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>1</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="0" colspan="2">
+                   <widget class="QCheckBox" name="p_on_drone">
+                    <property name="toolTip">
+                     <string>A steady low root + fifth.</string>
+                    </property>
+                    <property name="text">
+                     <string>Drone</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="0">
+                   <widget class="QLabel" name="lbl_drive_drone">
+                    <property name="text">
+                     <string>   follows</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>The track of the picture that drives this voice.
+'Movement near the scan line' follows what moves in the part of a video being scanned right now (band width: Picture tab).</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="1">
+                   <widget class="ComboNW" name="p_drive_drone">
+                    <property name="toolTip">
+                     <string>The track of the picture that drives this voice.
+'Movement near the scan line' follows what moves in the part of a video being scanned right now (band width: Picture tab).</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Brightness per strip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Bright spots per strip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Onsets per strip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Overall brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Vertical centre of brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Vertical spread of brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Colour saturation</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Colourfulness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Warm colour intensity</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Warmth (red vs blue)</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Movement of the whole frame</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Movement near the scan line</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Edge / onset strength</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Texture / fine detail</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Bottom third brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Middle third brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Top third brightness</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>3</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="0">
+                   <widget class="QCheckBox" name="p_on_waves">
+                    <property name="toolTip">
+                     <string>Noise that swells with its driver (movement by default, so silent for still pictures).</string>
+                    </property>
+                    <property name="text">
+                     <string>Waves</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="1">
+                   <widget class="DSpinNW" name="p_level_waves">
+                    <property name="toolTip">
+                     <string>Level relative to the original balance.</string>
+                    </property>
+                    <property name="decimals">
+                     <number>1</number>
+                    </property>
+                    <property name="minimum">
+                     <double>-30.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>12.0</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>1.0</double>
+                    </property>
+                    <property name="value">
+                     <double>0.0</double>
+                    </property>
+                    <property name="suffix">
+                     <string> dB</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="7" column="0">
+                   <widget class="QLabel" name="lbl_drive_waves">
+                    <property name="text">
+                     <string>   follows</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>The track of the picture that drives this voice.
+'Movement near the scan line' follows what moves in the part of a video being scanned right now (band width: Picture tab).</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="7" column="1">
+                   <widget class="ComboNW" name="p_drive_waves">
+                    <property name="toolTip">
+                     <string>The track of the picture that drives this voice.
+'Movement near the scan line' follows what moves in the part of a video being scanned right now (band width: Picture tab).</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Brightness per strip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Bright spots per strip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Onsets per strip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Overall brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Vertical centre of brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Vertical spread of brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Colour saturation</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Colourfulness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Warm colour intensity</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Warmth (red vs blue)</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Movement of the whole frame</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Movement near the scan line</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Edge / onset strength</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Texture / fine detail</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Bottom third brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Middle third brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Top third brightness</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>10</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="8" column="0">
+                   <widget class="QLabel" name="lbl_wave_follow">
+                    <property name="text">
+                     <string>   how closely</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>How much of the waves' volume comes from their track.  40 % (original): the waves only swell a little with it.
+100 %: the volume is the track - silent where nothing moves.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="8" column="1">
+                   <widget class="SpinNW" name="p_wave_follow">
+                    <property name="toolTip">
+                     <string>How much of the waves' volume comes from their track.  40 % (original): the waves only swell a little with it.
+100 %: the volume is the track - silent where nothing moves.</string>
+                    </property>
+                    <property name="minimum">
+                     <number>0</number>
+                    </property>
+                    <property name="maximum">
+                     <number>100</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>10</number>
+                    </property>
+                    <property name="value">
+                     <number>40</number>
+                    </property>
+                    <property name="suffix">
+                     <string> %</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="9" column="0">
+                   <widget class="QLabel" name="lbl_air_mode">
+                    <property name="text">
+                     <string>Waves sound</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Character of the Waves voice.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="9" column="1">
+                   <widget class="ComboNW" name="p_air_mode">
+                    <property name="toolTip">
+                     <string>Character of the Waves voice.</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Ocean waves</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Soft hiss</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>0</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="10" column="0">
+                   <widget class="QCheckBox" name="p_on_drums">
+                    <property name="toolTip">
+                     <string>Kick, snare and hi-hat on a 16-step grid; the picture decides which steps play.</string>
+                    </property>
+                    <property name="text">
+                     <string>Drums</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="10" column="1">
+                   <widget class="DSpinNW" name="p_level_drums">
+                    <property name="toolTip">
+                     <string>Level relative to the original balance.</string>
+                    </property>
+                    <property name="decimals">
+                     <number>1</number>
+                    </property>
+                    <property name="minimum">
+                     <double>-30.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>12.0</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>1.0</double>
+                    </property>
+                    <property name="value">
+                     <double>0.0</double>
+                    </property>
+                    <property name="suffix">
+                     <string> dB</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="11" column="0">
+                   <widget class="QLabel" name="lbl_drive_drums">
+                    <property name="text">
+                     <string>   follows</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>The track of the picture that drives this voice.
+'Movement near the scan line' follows what moves in the part of a video being scanned right now (band width: Picture tab).</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="11" column="1">
+                   <widget class="ComboNW" name="p_drive_drums">
+                    <property name="toolTip">
+                     <string>The track of the picture that drives this voice.
+'Movement near the scan line' follows what moves in the part of a video being scanned right now (band width: Picture tab).</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Bottom / middle third + texture</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Brightness per strip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Bright spots per strip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Onsets per strip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Overall brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Vertical centre of brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Vertical spread of brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Colour saturation</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Colourfulness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Warm colour intensity</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Warmth (red vs blue)</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Movement of the whole frame</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Movement near the scan line</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Edge / onset strength</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Texture / fine detail</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Bottom third brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Middle third brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Top third brightness</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>0</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="12" column="0">
+                   <widget class="QCheckBox" name="p_on_plucks">
+                    <property name="toolTip">
+                     <string>Short high plucks fired by the strongest moments of their driver.</string>
+                    </property>
+                    <property name="text">
+                     <string>Plucks</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="12" column="1">
+                   <widget class="DSpinNW" name="p_level_plucks">
+                    <property name="toolTip">
+                     <string>Level relative to the original balance.</string>
+                    </property>
+                    <property name="decimals">
+                     <number>1</number>
+                    </property>
+                    <property name="minimum">
+                     <double>-30.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>12.0</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>1.0</double>
+                    </property>
+                    <property name="value">
+                     <double>0.0</double>
+                    </property>
+                    <property name="suffix">
+                     <string> dB</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="13" column="0">
+                   <widget class="QLabel" name="lbl_drive_plucks">
+                    <property name="text">
+                     <string>   follows</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>The track of the picture that drives this voice.
+'Movement near the scan line' follows what moves in the part of a video being scanned right now (band width: Picture tab).</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="13" column="1">
+                   <widget class="ComboNW" name="p_drive_plucks">
+                    <property name="toolTip">
+                     <string>The track of the picture that drives this voice.
+'Movement near the scan line' follows what moves in the part of a video being scanned right now (band width: Picture tab).</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Brightness per strip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Bright spots per strip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Onsets per strip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Overall brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Vertical centre of brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Vertical spread of brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Colour saturation</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Colourfulness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Warm colour intensity</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Warmth (red vs blue)</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Movement of the whole frame</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Movement near the scan line</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Edge / onset strength</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Texture / fine detail</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Bottom third brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Middle third brightness</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Top third brightness</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>12</number>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <spacer name="spacer_layers">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_sound">
+           <attribute name="title">
+            <string>Sound</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="lay_tab_sound">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QScrollArea" name="scroll_sound">
+              <property name="widgetResizable">
+               <bool>true</bool>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="horizontalScrollBarPolicy">
+               <enum>Qt::ScrollBarAlwaysOff</enum>
+              </property>
+              <widget class="QWidget" name="page_sound">
+               <layout class="QVBoxLayout" name="lay_sound">
+                <property name="leftMargin">
+                 <number>14</number>
+                </property>
+                <property name="topMargin">
+                 <number>14</number>
+                </property>
+                <property name="rightMargin">
+                 <number>14</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>14</number>
+                </property>
+                <property name="spacing">
+                 <number>10</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="hint_sound">
+                  <property name="text">
+                   <string>Settings of the original sound that change it audibly (see the sweep table in the README); the rest are fixed.</string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                  <property name="role" stdset="0">
+                   <string>hint</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QFormLayout" name="form_sound">
+                  <property name="verticalSpacing">
+                   <number>9</number>
+                  </property>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="lbl_root">
+                    <property name="text">
+                     <string>Key</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Home note of the scale.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="ComboNW" name="p_root">
+                    <property name="toolTip">
+                     <string>Home note of the scale.</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>C</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>C#</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>D</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>D#</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>E</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>F</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>F#</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>G</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>G#</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>A</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>A#</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>B</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>2</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="lbl_mode">
+                    <property name="text">
+                     <string>Scale</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Pentatonic has no semitone steps, so any notes together sound consonant.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="ComboNW" name="p_mode">
+                    <property name="toolTip">
+                     <string>Pentatonic has no semitone steps, so any notes together sound consonant.</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Pentatonic (calm, never clashes)</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Major (bright)</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Minor (dark)</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Dorian (open minor)</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Lydian (dreamy)</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>0</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="lbl_shift">
+                    <property name="text">
+                     <string>Pitch shift</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Moves everything up or down in semitones. ±12 = one octave.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="SpinNW" name="p_shift">
+                    <property name="toolTip">
+                     <string>Moves everything up or down in semitones. ±12 = one octave.</string>
+                    </property>
+                    <property name="minimum">
+                     <number>-24</number>
+                    </property>
+                    <property name="maximum">
+                     <number>24</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>1</number>
+                    </property>
+                    <property name="value">
+                     <number>0</number>
+                    </property>
+                    <property name="suffix">
+                     <string> st</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0">
+                   <widget class="QLabel" name="lbl_voices">
+                    <property name="text">
+                     <string>Pad voices</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Number of pitch strips = pad notes (top strip = highest).</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="SpinNW" name="p_voices">
+                    <property name="toolTip">
+                     <string>Number of pitch strips = pad notes (top strip = highest).</string>
+                    </property>
+                    <property name="minimum">
+                     <number>4</number>
+                    </property>
+                    <property name="maximum">
+                     <number>24</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>1</number>
+                    </property>
+                    <property name="value">
+                     <number>12</number>
+                    </property>
+                    <property name="suffix">
+                     <string />
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="0">
+                   <widget class="QLabel" name="lbl_event_voices">
+                    <property name="text">
+                     <string>Bells at once</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Most bells allowed to ring at the same moment. 1 = very sparse.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="1">
+                   <widget class="SpinNW" name="p_event_voices">
+                    <property name="toolTip">
+                     <string>Most bells allowed to ring at the same moment. 1 = very sparse.</string>
+                    </property>
+                    <property name="minimum">
+                     <number>1</number>
+                    </property>
+                    <property name="maximum">
+                     <number>8</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>1</number>
+                    </property>
+                    <property name="value">
+                     <number>3</number>
+                    </property>
+                    <property name="suffix">
+                     <string />
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="0">
+                   <widget class="QLabel" name="lbl_event_shift">
+                    <property name="text">
+                     <string>Bell pitch</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Bells sound this many semitones above their pad note. 12 = one octave.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="1">
+                   <widget class="SpinNW" name="p_event_shift">
+                    <property name="toolTip">
+                     <string>Bells sound this many semitones above their pad note. 12 = one octave.</string>
+                    </property>
+                    <property name="minimum">
+                     <number>0</number>
+                    </property>
+                    <property name="maximum">
+                     <number>36</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>1</number>
+                    </property>
+                    <property name="value">
+                     <number>12</number>
+                    </property>
+                    <property name="suffix">
+                     <string> st</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="0">
+                   <widget class="QLabel" name="lbl_reverb">
+                    <property name="text">
+                     <string>Reverb</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Room echo on pad, bells and percussion. 0 = dry.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="1">
+                   <widget class="SpinNW" name="p_reverb">
+                    <property name="toolTip">
+                     <string>Room echo on pad, bells and percussion. 0 = dry.</string>
+                    </property>
+                    <property name="minimum">
+                     <number>0</number>
+                    </property>
+                    <property name="maximum">
+                     <number>80</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>5</number>
+                    </property>
+                    <property name="value">
+                     <number>30</number>
+                    </property>
+                    <property name="suffix">
+                     <string> %</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="7" column="0">
+                   <widget class="QLabel" name="lbl_bpm">
+                    <property name="text">
+                     <string>Tempo</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Speed of the beat grid (16th notes).</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="7" column="1">
+                   <widget class="SpinNW" name="p_bpm">
+                    <property name="toolTip">
+                     <string>Speed of the beat grid (16th notes).</string>
+                    </property>
+                    <property name="minimum">
+                     <number>40</number>
+                    </property>
+                    <property name="maximum">
+                     <number>200</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>5</number>
+                    </property>
+                    <property name="value">
+                     <number>100</number>
+                    </property>
+                    <property name="suffix">
+                     <string> bpm</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="8" column="0">
+                   <widget class="QLabel" name="lbl_swing">
+                    <property name="text">
+                     <string>Swing</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Delays every second 16th note. 0 = straight, 33 = shuffle.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="8" column="1">
+                   <widget class="SpinNW" name="p_swing">
+                    <property name="toolTip">
+                     <string>Delays every second 16th note. 0 = straight, 33 = shuffle.</string>
+                    </property>
+                    <property name="minimum">
+                     <number>0</number>
+                    </property>
+                    <property name="maximum">
+                     <number>50</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>5</number>
+                    </property>
+                    <property name="value">
+                     <number>0</number>
+                    </property>
+                    <property name="suffix">
+                     <string> %</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="9" column="0">
+                   <widget class="QLabel" name="lbl_density">
+                    <property name="text">
+                     <string>Beat density</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Higher = more drum hits.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="9" column="1">
+                   <widget class="SpinNW" name="p_density">
+                    <property name="toolTip">
+                     <string>Higher = more drum hits.</string>
+                    </property>
+                    <property name="minimum">
+                     <number>0</number>
+                    </property>
+                    <property name="maximum">
+                     <number>100</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>5</number>
+                    </property>
+                    <property name="value">
+                     <number>60</number>
+                    </property>
+                    <property name="suffix">
+                     <string> %</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="10" column="0">
+                   <widget class="QLabel" name="lbl_pluck_amount">
+                    <property name="text">
+                     <string>Pluck amount</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Share of grid steps that may fire a pluck (the strongest onsets first).</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="10" column="1">
+                   <widget class="SpinNW" name="p_pluck_amount">
+                    <property name="toolTip">
+                     <string>Share of grid steps that may fire a pluck (the strongest onsets first).</string>
+                    </property>
+                    <property name="minimum">
+                     <number>0</number>
+                    </property>
+                    <property name="maximum">
+                     <number>90</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>5</number>
+                    </property>
+                    <property name="value">
+                     <number>35</number>
+                    </property>
+                    <property name="suffix">
+                     <string> %</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="11" column="0">
+                   <widget class="QLabel" name="lbl_motion_boost">
+                    <property name="text">
+                     <string>Motion → beat</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>How much motion in a video adds drum hits. No effect on still pictures.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="11" column="1">
+                   <widget class="DSpinNW" name="p_motion_boost">
+                    <property name="toolTip">
+                     <string>How much motion in a video adds drum hits. No effect on still pictures.</string>
+                    </property>
+                    <property name="decimals">
+                     <number>2</number>
+                    </property>
+                    <property name="minimum">
+                     <double>0.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>1.0</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>0.05</double>
+                    </property>
+                    <property name="value">
+                     <double>0.25</double>
+                    </property>
+                    <property name="suffix">
+                     <string />
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="12" column="0">
+                   <widget class="QLabel" name="lbl_pluck_shift">
+                    <property name="text">
+                     <string>Pluck pitch</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Register of the plucks.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="12" column="1">
+                   <widget class="ComboNW" name="p_pluck_shift">
+                    <property name="toolTip">
+                     <string>Register of the plucks.</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>1 octave above the pad (+12)</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>2 octaves (+24)</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>3 octaves (+36)</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>1</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="13" column="0">
+                   <widget class="QLabel" name="lbl_seed">
+                    <property name="text">
+                     <string>Variation</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Another number = another (equally valid) reverb texture and wave timing.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="13" column="1">
+                   <widget class="SpinNW" name="p_seed">
+                    <property name="toolTip">
+                     <string>Another number = another (equally valid) reverb texture and wave timing.</string>
+                    </property>
+                    <property name="minimum">
+                     <number>0</number>
+                    </property>
+                    <property name="maximum">
+                     <number>9999</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>1</number>
+                    </property>
+                    <property name="value">
+                     <number>0</number>
+                    </property>
+                    <property name="suffix">
+                     <string />
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="14" column="0">
+                   <widget class="QLabel" name="lbl_fade_in">
+                    <property name="text">
+                     <string>Fade in</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Keep at least 0.05 s to avoid a click.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="14" column="1">
+                   <widget class="DSpinNW" name="p_fade_in">
+                    <property name="toolTip">
+                     <string>Keep at least 0.05 s to avoid a click.</string>
+                    </property>
+                    <property name="decimals">
+                     <number>2</number>
+                    </property>
+                    <property name="minimum">
+                     <double>0.05</double>
+                    </property>
+                    <property name="maximum">
+                     <double>10.0</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>0.1</double>
+                    </property>
+                    <property name="value">
+                     <double>0.6</double>
+                    </property>
+                    <property name="suffix">
+                     <string> s</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="15" column="0">
+                   <widget class="QLabel" name="lbl_fade_out">
+                    <property name="text">
+                     <string>Fade out</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Length of the fade at the end.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="15" column="1">
+                   <widget class="DSpinNW" name="p_fade_out">
+                    <property name="toolTip">
+                     <string>Length of the fade at the end.</string>
+                    </property>
+                    <property name="decimals">
+                     <number>2</number>
+                    </property>
+                    <property name="minimum">
+                     <double>0.05</double>
+                    </property>
+                    <property name="maximum">
+                     <double>10.0</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>0.1</double>
+                    </property>
+                    <property name="value">
+                     <double>1.5</double>
+                    </property>
+                    <property name="suffix">
+                     <string> s</string>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <spacer name="spacer_sound">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_output">
+           <attribute name="title">
+            <string>Output</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="lay_tab_output">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QScrollArea" name="scroll_output">
+              <property name="widgetResizable">
+               <bool>true</bool>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="horizontalScrollBarPolicy">
+               <enum>Qt::ScrollBarAlwaysOff</enum>
+              </property>
+              <widget class="QWidget" name="page_output">
+               <layout class="QVBoxLayout" name="lay_output">
+                <property name="leftMargin">
+                 <number>14</number>
+                </property>
+                <property name="topMargin">
+                 <number>14</number>
+                </property>
+                <property name="rightMargin">
+                 <number>14</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>14</number>
+                </property>
+                <property name="spacing">
+                 <number>10</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="hint_output">
+                  <property name="text">
+                   <string>Files are written with the original writer: one mix, one stem per voice in a 'stems' folder, the control tracks.</string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                  <property name="role" stdset="0">
+                   <string>hint</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QFormLayout" name="form_output">
+                  <property name="verticalSpacing">
+                   <number>9</number>
+                  </property>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="lbl_out_base">
+                    <property name="text">
+                     <string>Folder</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>Where the files go (one sub-folder per picture / video).</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLineEdit" name="p_out_base">
+                    <property name="toolTip">
+                     <string>Where the files go (one sub-folder per picture / video).</string>
+                    </property>
+                    <property name="placeholderText">
+                     <string>automatic: &lt;working folder&gt;/ColorDominance_output</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0" colspan="2">
+                   <widget class="QCheckBox" name="p_stems">
+                    <property name="toolTip">
+                     <string>The stems add up to the mix (one scale factor for all).</string>
+                    </property>
+                    <property name="text">
+                     <string>also write one stem per voice</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="lbl_wav_format">
+                    <property name="text">
+                     <string>Format</string>
+                    </property>
+                    <property name="toolTip">
+                     <string>16-bit plays everywhere; 32-bit float keeps full precision.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="ComboNW" name="p_wav_format">
+                    <property name="toolTip">
+                     <string>16-bit plays everywhere; 32-bit float keeps full precision.</string>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                    </property>
+                    <property name="minimumContentsLength">
+                     <number>12</number>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>WAV 16-bit</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>WAV 32-bit float (no rounding)</string>
+                     </property>
+                    </item>
+                    <property name="currentIndex">
+                     <number>0</number>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <spacer name="spacer_output">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="lay_bottom" stretch="0,0,0,0,1">
+      <property name="spacing">
+       <number>12</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="btn_extract">
+        <property name="text">
+         <string>1   Extract</string>
+        </property>
+        <property name="role" stdset="0">
+         <string>primary</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_sonify">
+        <property name="text">
+         <string>2   Generate audio</string>
+        </property>
+        <property name="role" stdset="0">
+         <string>secondary</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_open">
+        <property name="text">
+         <string>Open output folder</string>
+        </property>
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QProgressBar" name="progress">
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+        <property name="value">
+         <number>0</number>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>220</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>220</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="status">
+        <property name="text">
+         <string>Choose a folder to begin.</string>
+        </property>
+        <property name="role" stdset="0">
+         <string>dim</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SourceView</class>
+   <extends>QWidget</extends>
+   <header>widgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>StripMeters</class>
+   <extends>QWidget</extends>
+   <header>widgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>HeatView</class>
+   <extends>QWidget</extends>
+   <header>widgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SpinNW</class>
+   <extends>QSpinBox</extends>
+   <header>widgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DSpinNW</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ComboNW</class>
+   <extends>QComboBox</extends>
+   <header>widgets.h</header>
+  </customwidget>
+ </customwidgets>
+</ui>
